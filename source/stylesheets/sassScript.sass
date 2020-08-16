@@ -1,0 +1,20 @@
+.main aside:hover,
+.sidebar p
+  parent-selector: &
+  // => ((unquote(".main") unquote("aside:hover")),
+  //     (unquote(".sidebar") unquote("p")))
+
+
+@mixin app-background($color)
+  // If the & expression is used outside any style rules, it returns null
+  #{if(&, '&.app-background', '.app-background')}
+    background-color: $color
+    color: rgba(#fff, 0.75)
+
+
+
+@include app-background(#036)
+
+.sidebar
+  @include app-background(#c6538c)
+
